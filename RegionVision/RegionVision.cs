@@ -375,7 +375,7 @@ namespace RegionVision {
         /// <param name="item">The item to give</param>
         public void giveItem(Player player, Item item) {
             int itemID = Item.NewItem((int) player.TSPlayer.X, (int) player.TSPlayer.Y, item.width, item.height, item.type, 1, true, 0, true);
-            Main.item[itemID].owner = player.index;
+            Main.item[itemID].FindOwner(player.index);
             NetMessage.SendData((int) PacketTypes.ItemDrop, -1, -1, NetworkText.Empty, itemID, 0f, 0f, 0f);
             NetMessage.SendData((int) PacketTypes.ItemOwner, -1, -1, NetworkText.Empty, itemID, 0f, 0f, 0f);
         }
